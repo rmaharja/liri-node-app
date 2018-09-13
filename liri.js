@@ -10,14 +10,26 @@ var spotify = new Spotify(keys.spotify);
 
 // var input= process.argv[2];
 
-spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
-  }
+if (process.argv[2] === "spotify-this-song"){
+  spotifyAPI();
+}
+
+function spotifyAPI(){
+var inputSpotify= process.argv[3];
+
+spotify.search({ type: 'track', query: inputSpotify }, function(err, data) {
+ if (err) {
+   return console.log('Error occurred: ' + err);
+ }
+
+ var albumData = data.tracks.items;
+
+ albumData.forEach(function(album) {
+       console.log(`Album name: ${album.album.name}`)
+       album.artists.forEach(function(artist) {
+           console.log(`Artist name: ${artist.name}`);
+       })
+ });
  
-  console.log(data.items);
-// console.log(JSON.stringify(data)); 
-// console.log(JSON.stringify(result, null, 2));
-
 });
-
+}
