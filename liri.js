@@ -3,6 +3,8 @@ var bandsintown = require('bandsintown')('codingbootcamp');
 var moment = require('moment');
 var omdb = require('omdb');
 var omdbApi = require('omdb-client');
+var fs = require("fs");
+
 
 require("dotenv").config();
 
@@ -32,9 +34,17 @@ else if (process.argv[2] === "concert-this") {
 }
 else if (process.argv[2] === "movie-this") {
 
-  var inputMovie = process.argv[3];
-  omdbAPI();
-}
+  if (process.argv[3] == null) {
+
+    var inputMovie = "Mr. Peabody";
+    omdbAPI();
+  }
+  else
+
+  {
+    var inputMovie = process.argv[3];
+    omdbApi();
+  }}
 
 //====================== Spotify API =====================================================//
 
@@ -114,8 +124,6 @@ function bandAPI() {
 // =============OMDB START in========================================================//
 function omdbAPI() {
   var omdbApi = require('omdb-client');
-
-
 
   var output = function(err, data) {
     if (err) {
