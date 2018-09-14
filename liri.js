@@ -59,7 +59,12 @@ else if (process.argv[2] === "movie-this") {
   else {
     console.log(`I don't like it that way. Type a proper command. i.e missing an "-"? or forgot the quotes??`)
   }
-//====================== Spotify API =====================================================//
+// ==============END OF CONDITIONALS===============================================
+// ==============END OF CONDITIONALS===============================================
+
+
+
+//====================== Spotify APi=============================================//
 
 function spotifyAPI() {
 
@@ -103,11 +108,11 @@ function spotifyAPI() {
 //        })
 //  });
 
-// ==========End of Spotify===============================================================//
-// ==========End of Spotify===============================================================//
+// ==========End of Spotify======================================================//
+// ==========End of Spotify======================================================//
 
 
-// ==========BANDS IN TOWN================================================================//
+// ==========BANDS IN TOWN=======================================================//
 
 function bandAPI() {
   bandsintown
@@ -124,21 +129,21 @@ function bandAPI() {
 
         console.log(`Date: ${moment(events[i].datetime).format("MM/DD/YYYY")}`);
 
+        console.log("\n");
 
       }
-      console.log("\n");
 
     });
 }
-// =============End of Bands in========================================================//
-// =============End of Bands in========================================================//
+// =============End of Bands in==================================================//
+// =============End of Bands in==================================================//
 
 
 
 
 
 
-// =============OMDB START in========================================================//
+// =============OMDB START in===============================================//
 function omdbAPI() {
 
   var output = function(err, data) {
@@ -191,8 +196,8 @@ fs.readFile("random.txt", "utf8", function (err, data){
     // Pushed to empty array for clarity//
     console.log(res[0]);
     console.log(res[1]);
-    console.log( "THIS FUNCTION IS NOT YET WORKING...ANY COMMENTS WOULD HELP!")
-
+    console.log( "THIS FUNCTION IS NOT YET WORKING...")
+    console.log( "I think I am relatively close, but ANY COMMENTS WOULD HELP!!")
     process.argv[2]= res[0];
     process.argv[3]= res[1];
 
