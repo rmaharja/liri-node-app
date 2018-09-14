@@ -43,9 +43,13 @@ else if (process.argv[2] === "movie-this") {
 
   {
     var inputMovie = process.argv[3];
-    omdbApi();
+    omdbAPI();
   }}
 
+  else if (process.argv[2] === "do-what-it-says"){
+
+    readFile(process.argv[2], process.argv[3]);
+  }
 //====================== Spotify API =====================================================//
 
 function spotifyAPI() {
@@ -111,9 +115,10 @@ function bandAPI() {
 
         console.log(`Date: ${moment(events[i].datetime).format("MM/DD/YYYY")}`);
 
-        console.log("\n");
 
       }
+      console.log("\n");
+
     });
 }
 // =============End of Bands in========================================================//
@@ -121,15 +126,29 @@ function bandAPI() {
 
 
 
+
+
+
 // =============OMDB START in========================================================//
 function omdbAPI() {
-  var omdbApi = require('omdb-client');
 
   var output = function(err, data) {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);	
+      console.log(data);
+      for( var i = 0 ; i<data.length; i++){	
+      console.log (`Movie Title: ${data[i].Title}`);
+      console.log (`Released Year: ${data[i].Year}`);
+      console.log (`IMBD Rating: ${data[i].Rated}`);
+      console.log (`Rotten Tomatoes Rating: ${data[i].Ratings[1].source}`);
+      console.log (`Produced in: ${data[i].Country}`);
+      console.log (`Language: ${data[i].Language}`);
+      console.log (`Plot: ${data[i].Plot}`);
+      console.log (`Actors: ${data[i].PlotActors}`);
+    }
+    console.log("\n");
+
     }
   };
   
@@ -140,5 +159,27 @@ function omdbAPI() {
 
 }
 
+//=============OMDB API END===============================//
+//=============OMDB API END===============================//
 
 
+
+
+
+
+// ========================Do-WHat-it-says-file===============//
+function readFile(){
+
+fs.readFile("random.txt", "utf8", function (err, data){
+  if (err){
+    return console.log(err);
+  }
+  else{
+    console.log(data);
+    // data appears, but 
+  }
+
+
+   // end of FS readfile
+});
+}
