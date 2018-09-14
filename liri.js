@@ -52,6 +52,10 @@ else if (process.argv[2] === "movie-this") {
 
     readFile(process.argv[2], process.argv[3]);
   }
+
+  else {
+    console.log(`I don't like it that way. Type a proper command. i.e missing an "-"? or forgot the quotes??`)
+  }
 //====================== Spotify API =====================================================//
 
 function spotifyAPI() {
