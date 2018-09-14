@@ -2,14 +2,14 @@ var Spotify = require("node-spotify-api");
 var bandsintown = require('bandsintown')('codingbootcamp');
 var moment = require('moment');
 var omdb = require('omdb');
+var omdbApi = require('omdb-client');
 
 require("dotenv").config();
 
 var keys = require("./key.js");
 var spotify = new Spotify(keys.spotify);
 
-//====================== Spotify API =====================================================//
-
+// ==Conditionals (Could combined into functions)...Testing out a different way..Does not seem as efficient//
 if (process.argv[2] === "spotify-this-song") {
 
   if (process.argv[3] == null) {
@@ -32,8 +32,11 @@ else if (process.argv[2] === "concert-this") {
 }
 else if (process.argv[2] === "movie-this") {
 
+  var inputMovie = process.argv[3];
   omdbAPI();
 }
+
+//====================== Spotify API =====================================================//
 
 function spotifyAPI() {
 
@@ -110,21 +113,23 @@ function bandAPI() {
 
 // =============OMDB START in========================================================//
 function omdbAPI() {
-  omdb.search('saw', function (err, movies) {
+  var omdbApi = require('omdb-client');
+
+
+
+  var output = function(err, data) {
     if (err) {
-      return console.error(err);
+      console.log(err);
+    } else {
+      console.log(data);	
     }
+  };
+  
+  omdbApi.get({
+    apiKey: 'trilogy',
+    title: inputMovie,
+  }, output);
 
-    if (movies.length < 1) {
-      return console.log('No movies were found!');
-    }
-
-    movies.forEach(function (movie) {
-      console.log('%s (%d)', movie.title, movie.year);
-      
-    });
-
-  });
 }
 
 
