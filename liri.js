@@ -12,6 +12,8 @@ var keys = require("./key.js");
 var spotify = new Spotify(keys.spotify);
 
 // ==Conditionals (Could combined into functions)...Testing out a different way..Does not seem as efficient//
+
+// Try Switch next time!!!
 if (process.argv[2] === "spotify-this-song") {
 
   if (process.argv[3] == null) {
@@ -176,7 +178,7 @@ fs.readFile("random.txt", "utf8", function (err, data){
   }
   else{
     console.log(data);
-    // data appears, but 
+    // data appears, but how to add to command line??? O_o
   }
 
 
