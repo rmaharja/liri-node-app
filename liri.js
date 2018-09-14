@@ -5,6 +5,9 @@ var omdb = require('omdb');
 var omdbApi = require('omdb-client');
 var fs = require("fs");
 
+var emptyArr= [];
+// May not need empty Arr//
+
 
 require("dotenv").config();
 
@@ -90,7 +93,7 @@ function spotifyAPI() {
   });
 
 }
-// Similar to for loop (cleaner)
+// Similar to forloop (cleaner)
 //  var albumData = data.tracks.items;
 
 //  albumData.forEach(function(album) {
@@ -181,8 +184,22 @@ fs.readFile("random.txt", "utf8", function (err, data){
     return console.log(err);
   }
   else{
-    console.log(data);
+    var newData= (data.replace(/,/g,""));
+    var res = newData.split (" ");
+    // console.log(res);
+
+    // Pushed to empty array for clarity//
+    console.log(res[0]);
+    console.log(res[1]);
+    console.log( "THIS FUNCTION IS NOT YET WORKING...ANY COMMENTS WOULD HELP!")
+
+    process.argv[2]= res[0];
+    process.argv[3]= res[1];
+
+
     // data appears, but how to add to command line??? O_o
+    // First push the data into an empty array, split it up into two indexes,
+    // then set them as process.argv[2], process.argv[3]??
   }
 
 
